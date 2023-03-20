@@ -1,0 +1,15 @@
+# Connect to Active Directory
+
+Import-Module ActiveDirectory
+
+# Get a list of all user accounts with Kerberos encryption support turned off
+
+$users = Get-ADUser -Filter {KerberosEncryptionType -eq 0} -Properties KerberosEncryptionType
+
+# Display the list of users
+
+foreach ($user in $users) {
+
+    Write-Host "User: $($user.SamAccountName)"
+    
+}
